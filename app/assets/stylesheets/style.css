@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-main);
+}
+
+body{
+	background-color:#202124; 
+}
+
+:root {
+	--font-main: 'Comfortaa', cursive;
+	--font-video-player: 'Poppins', sans-serif;
+}
+
+.material-icons {
+	user-select:none;
+	-webkit-user-select:none;
+	cursor:pointer;
+	color:#f2f3f4;
+}
+
+.icons-button:hover > span,
+.icons-button:active > span,
+.icons-button:focus > span {
+  font-weight: 600; 
+  background-color: #353638;
+}
+
+.drop-down-menu {
+    position: relative;
+    display: flex;
+    width:210px;
+    height:53px;
+    align-items: center;
+    justify-content: center;
+    background-color:#353638;
+    letter-spacing: 2px;
+    color:#fff;
+    cursor: default;
+    font-family: var(--font-main);
+    z-index: 5;
+}
+
+.drop-down-menu {
+	font-family: var(--font-main);
+}
+
+.drop-down-menu-arrow {
+	position: relative;
+  	font-size: 14px;
+ 	margin-left:40px;	
+}
+
+.drop-down-menu .drop-down-menu-arrow.active {
+	cursor: default;
+	transition:0.4342s;
+	transform:rotate(-180deg);	
+}
+
+.drop-down-menu:hover .droped-down-menu , .drop-down-menu:hover{
+	background: #5D5D5D; 
+}
+
+.drop-down-menu .droped-down-menu {
+	position: absolute;
+	width:210px;
+	height:auto;
+	top:53px;
+	background-color:#343434;
+	max-height: 800px;
+	z-index:5;  
+	display: none;
+}
+
+.drop-down-menu .droped-down-menu.active {  
+	display: block;
+}
+
+.drop-down-menu .droped-down-menu > a {
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+	text-overflow: ellipsis;
+	text-decoration: none;
+}
+
+.drop-down-menu .droped-down-menu > a:hover {
+	background: rgba(28, 28, 28, 0.7);	
+}
+
+.droped-down-menu > a, .heading-menu{
+	position: relative;
+	color:#fff;
+	font-size: 13px;
+	width: inherit;
+	height:35px;
+	letter-spacing: 2px;
+}
+
+.drop-down-menu .droped-down-menu .heading-menu{
+	text-align:left; 
+	margin: 0;      
+   	display: flex;
+  	align-items: center;                      
+	font-size:15px;
+	font-weight: bold;
+	padding: 0px 0px 0px 10px;
+}
