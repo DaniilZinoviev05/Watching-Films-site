@@ -13,7 +13,6 @@ gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-
 # db
 gem "pg", "~> 1.1"
 
@@ -22,6 +21,7 @@ gem 'devise'
 
 # design
 gem "tailwindcss-rails", "~> 2.6"
+gem 'sassc-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
@@ -30,4 +30,6 @@ end
 
 group :development do
   gem "web-console"
+  gem 'guard'
+  gem 'guard-livereload', require: false
 end
