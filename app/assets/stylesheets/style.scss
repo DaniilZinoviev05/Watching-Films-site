@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-main);
 }
 
 body{
@@ -30,6 +29,8 @@ body{
   font-weight: 600; 
   background-color: #353638;
 }
+
+// dropdown menu design 
 
 .drop-down-menu {
     position: relative;
@@ -104,3 +105,55 @@ body{
 	font-weight: bold;
 	padding: 0px 0px 0px 10px;
 }
+
+// search design 
+
+.block-search {
+	display: none;
+	background-color: #2d2f31;
+	z-index: 10;
+}
+
+.search-mode {
+	display: flex;
+	font-size: 13px;
+	font-weight: 400;
+	padding-left: 10px;
+	height: 45px;
+	align-items: center;
+	-ms-user-select: none; 
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	user-select: none; 
+	background-color: #fff;
+	color: #000000;
+	outline: 0.1px solid #f4f4f4;
+	z-index: 10;
+
+	&::before {
+		position: relative;
+		content: "";
+		display: block;
+		align-items: center;
+		margin-right: 10px;
+		width: 5px;
+		height: 30px;
+	}
+
+	&.active {
+		&::before {
+		z-index: 11;
+		background-color: #120a8f;
+		}
+	}
+
+	&:hover {
+		&:not(.active)::before {
+		display: block;
+		z-index: 10;
+		opacity: 0.3;
+		background-color: #808080;
+		}
+	}
+}
+  

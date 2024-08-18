@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.2.3"
+ruby "3.3.4"
 
 gem "bootsnap", require: false
 gem "importmap-rails"
@@ -12,6 +12,7 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem 'dotenv-rails'
 
 # db
 gem "pg", "~> 1.1"
@@ -25,7 +26,6 @@ gem 'sassc-rails'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
-  gem 'dotenv-rails'
 end
 
 group :development do
