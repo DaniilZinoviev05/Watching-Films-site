@@ -8,11 +8,17 @@ export default class extends Controller {
     static targets = ["dropdownMenu", "openUserMenu"]
 
     connect(){
-        this.openUserMenuTarget.addEventListener("click", () => {
-            toggle(this.dropdownMenuTarget)
-        });
 
-        document.addEventListener("click", this.hide.bind(this));
+        const targetElement = this.element.querySelector('[data-target="openUserMenu"]');
+
+        if (targetElement) {
+            this.openUserMenuTarget.addEventListener("click", () => {
+                toggle(this.dropdownMenuTarget)
+            });
+    
+            document.addEventListener("click", this.hide.bind(this));
+        }
+
     }
 
     hide(event) {
