@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("turbo:load", () => {
     const dropdownmenu = document.querySelector(".drop-down-menu"), 
           dropeddownmenu = document.querySelector(".droped-down-menu"), 
           dropdownmenuarrow = document.querySelector(".drop-down-menu-arrow");

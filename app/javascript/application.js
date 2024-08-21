@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "./ForStyles/dropeddown"
 import "./ForStyles/search"
+import { Turbo } from "@hotwired/turbo-rails"
+Turbo.setFormMode("on")

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("turbo:load", () => {
     const searchInput = document.querySelector('.search-input');
     const blockSearch = document.querySelector('.block-search');
     const searchModes = blockSearch.querySelectorAll('.search-mode');
