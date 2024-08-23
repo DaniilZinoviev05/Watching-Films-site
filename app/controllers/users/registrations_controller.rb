@@ -1,61 +1,47 @@
-# frozen_string_literal: true
+# devise registration controller methods with captcha 
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+  prepend_before_action :check_captcha, only: [:create] 
 
-  # GET /resource/sign_up
-  def new
-    super
-  end
+  ALLOWED_EXCEPTIONS = [Faraday::Error, Net::ReadTimeout, Net::OpenTimeout].freeze
 
-  # POST /resource
-  def create
-    super
-  end
+  private 
 
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
+    def sign_up_params
+      params.require(:user).permit :nickname, :password, :email, :password_confirmation
+    end
 
-  # PUT /resource
-  # def update
-  #   super
-  # end
+    def check_captcha
+      unless valid_captcha?
+        self.resource = resource_class.new sign_up_params
+        resource.validate
+        set_minimum_password_length
+        resource.errors.add(:base, 'Верификация не пройдена. Попробуйте снова.')
+        render :new, status: :unprocessable_entity
+      end
+    end
 
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
-
-  # protected
-
-  # extra params sanitizer.
-  #def configure_sign_up_params
-   # devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-  #end
-
-  #def configure_account_update_params
-   # devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
-  #end
-
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+    def valid_captcha?
+      cf_response = 
+      Retryable.retryable tries: 2, on: ALLOWED_EXCEPTIONS, sleep: 1 do
+        Faraday.post do |req|
+          req.url 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
+          req.headers['Content-Type'] = 'application/json'
+          req.options.timeout = 15
+          req.options.open_timeout = 15
+          req.body = {
+            secret: ENV['SECRET_KEY'],
+            response: params[:'cf-turnstile-response']
+          }.to_json
+        end
+      end
+  
+      response_body = JSON.parse(cf_response.body, symbolize_names: true)
+  
+      response_body[:success]
+    rescue JSON::ParserError
+      true
+    end
 end

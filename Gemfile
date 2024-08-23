@@ -24,6 +24,12 @@ gem 'devise'
 gem "tailwindcss-rails", "~> 2.6"
 gem 'sassc-rails'
 
+# requests
+gem 'faraday'
+gem 'json'
+gem 'retryable'
+gem 'net-http'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
