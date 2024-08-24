@@ -10,16 +10,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private 
 
     def sign_up_params
-      params.require(:user).permit :nickname, :password, :email, :password_confirmation
+      params.require(:user).permit :nickname, :password, :email
     end
 
     def check_captcha
-      unless valid_captcha?
+      unless valid_captcha? || valid_recaptcha?
         self.resource = resource_class.new sign_up_params
         resource.validate
         set_minimum_password_length
         resource.errors.add(:base, 'Верификация не пройдена. Попробуйте снова.')
         render :new, status: :unprocessable_entity
+      end
+    end
+
+    def valid_recaptcha?
+      success = verify_recaptcha
+      if success
+        true
+      else
+        false
       end
     end
 

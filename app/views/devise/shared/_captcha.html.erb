@@ -1,6 +1,12 @@
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" defer></script>
 
-<div class="cf-turnstile" id="widget" data-sitekey="<%= ENV["PUBLIC_KEY"] %>"></div>
+<% if params[:is_recaptcha] %>
+    <%= recaptcha_tags %>
+<% else %>
+    <div class="cf-turnstile" id="widget" data-sitekey="<%= ENV["PUBLIC_KEY"] %>"></div>
+<% end %>
+
+Если не работает капча на странице <a href="?is_recaptcha=true">попробуйте другую</a>.
 
 <script>
 window.onloadTurnstileCallback = function () {

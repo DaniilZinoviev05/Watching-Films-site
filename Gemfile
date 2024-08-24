@@ -19,6 +19,7 @@ gem "pg", "~> 1.1"
 
 # registration/auth
 gem 'devise'
+gem 'recaptcha'
 
 # design
 gem "tailwindcss-rails", "~> 2.6"
