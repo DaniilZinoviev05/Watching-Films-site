@@ -20,6 +20,10 @@ gem "pg", "~> 1.1"
 # registration/auth
 gem 'devise'
 gem 'recaptcha'
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+# gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 
 # design
 gem "tailwindcss-rails", "~> 2.6"
