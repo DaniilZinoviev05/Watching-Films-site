@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :nickname, uniqueness: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, 
-         :omniauthable, omniauth_providers: [:vkontakte]
+         :omniauthable, omniauth_providers: %i[vkontakte google_oauth2]
   
   def self.provider_create(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

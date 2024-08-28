@@ -279,16 +279,13 @@ Devise.setup do |config|
     scope: 'email'
   )
 
-  OmniAuth.config.logger = Rails.logger
+  config.omniauth(
+    :google_oauth2, 
+    Rails.application.credentials.dig(:google, :google_client_id), 
+    Rails.application.credentials.dig(:google, :google_client_secret)
+  )
 
-  #config.omniauth(
-  # :google, 
-  # Rails.application.credentials.dig(:google, :google_client_id), 
-  # Rails.application.credentials.dig(:google, :google_client_secret), 
-  # {
-  #   scope: 'userinfo.email, userinfo.profile'
-  # } 
-  #)
+  OmniAuth.config.logger = Rails.logger
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
