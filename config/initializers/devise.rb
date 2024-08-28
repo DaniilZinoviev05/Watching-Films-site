@@ -276,8 +276,10 @@ Devise.setup do |config|
     :vkontakte, 
     Rails.application.credentials.dig(:vkontakte, :vkontakte_client_id), 
     Rails.application.credentials.dig(:vkontakte, :vkontakte_client_secret), 
-    scope: Rails.application.credentials.dig(:vkontakte, :vkontakte_permission)
+    scope: 'email'
   )
+
+  OmniAuth.config.logger = Rails.logger
 
   #config.omniauth(
   # :google, 

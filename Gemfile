@@ -24,6 +24,7 @@ gem 'omniauth'
 gem 'omniauth-vkontakte'
 # gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
+gem "omniauth-rails_csrf_protection"
 
 # design
 gem "tailwindcss-rails", "~> 2.6"
@@ -36,7 +37,10 @@ gem 'retryable'
 gem 'net-http'
 
 group :development, :test do
+  # debugging
+  gem 'byebug'
   gem "debug", platforms: %i[ mri windows ]
+  gem 'better_errors'
 end
 
 group :development do
