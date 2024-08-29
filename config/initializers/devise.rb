@@ -285,6 +285,12 @@ Devise.setup do |config|
     Rails.application.credentials.dig(:google, :google_client_secret)
   )
 
+  config.omniauth(
+    :yandex, 
+    Rails.application.credentials.dig(:yandex, :yandex_client_id), 
+    Rails.application.credentials.dig(:yandex, :yandex_client_secret)
+  )
+
   OmniAuth.config.logger = Rails.logger
 
   # ==> Warden configuration

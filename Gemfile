@@ -21,6 +21,7 @@ gem "pg", "~> 1.1"
 gem 'devise'
 gem 'recaptcha'
 gem 'omniauth'
+gem "omniauth-yandex"
 gem 'omniauth-vkontakte'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
