@@ -19,9 +19,3 @@
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
   <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
 <% end %>
-
-<%- if devise_mapping.omniauthable? %>
-  <%= button_to "<i class='fa-brands fa-google fa-lg' style='color:#fff'></i>".html_safe, omniauth_authorize_path(resource_name, :google_oauth2), data: { turbo: false }, class: "provider-button" %>
-  <%= button_to "<i class='fa-brands fa-vk fa-lg' style='color:#fff'></i>".html_safe, omniauth_authorize_path(resource_name, :vkontakte), data: { turbo: false }, class: "provider-button" %>
-  <%= button_to "<i class='fa-brands fa-yandex fa-lg' style='color:#fff'></i>".html_safe, omniauth_authorize_path(resource_name, :yandex), data: { turbo: false }, class: "provider-button" %>
-<% end %>
