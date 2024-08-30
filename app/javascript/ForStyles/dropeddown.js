@@ -1,20 +1,18 @@
 document.addEventListener("turbo:load", () => {
-    const dropdownmenu = document.querySelector(".drop-down-menu"), 
-          dropeddownmenu = document.querySelector(".droped-down-menu"), 
-          dropdownmenuarrow = document.querySelector(".drop-down-menu-arrow");
+    const dropDownBn = document.querySelector('.dropDownBn');
+    const dropdown = document.querySelector('.dropDowned');
 
-    if (dropdownmenu && dropeddownmenu && dropdownmenuarrow) {
-        dropdownmenu.addEventListener('mouseenter', () => {
-            dropdownmenuarrow.classList.add('active');
-            dropeddownmenu.classList.add('active');
-        });
+    dropDownBn.addEventListener('click', (event) => {
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        event.stopImmediatePropagation();
+    });
 
-        dropdownmenu.addEventListener('mouseleave', () => {
-  
-            dropdownmenuarrow.classList.remove('active');
-            dropeddownmenu.classList.remove('active');
-        });
-    } else {
-        console.error("Элемент не найден.");
-    }
+    document.addEventListener('click', (event) => {
+        if (!dropDownBn.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.style.display = 'none';
+        }
+    });
 });
+
+
+

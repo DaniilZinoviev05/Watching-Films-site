@@ -1,4 +1,4 @@
-<header class="bg-[#2d2f31] shadow" data-controller = "header"> 
+<header class="bg-[#f28e3c] shadow" data-controller = "header"> 
   <div class="lg:divide-gray-200 lg:px-8"> 
     <div class="relative flex h-16 justify-between"> 
       <div class="relative z-10 flex px-2 lg:px-0"> 
@@ -8,22 +8,35 @@
           <% end %>  
         </div> 
       </div> 
- 
-      <div class="relative z-0 flex items-center justify-start mx-8"> 
-        <div class="drop-down-menu"> 
-          <span>Главная</span> 
-            <span class="material-icons drop-down-menu-arrow"> 
-              expand_more 
-            </span> 
-          </span> 
-          <div class="droped-down-menu"> 
-            <div class="archive heading-menu">Архивы</div> 
-              <%= link_to "1", "#" %> 
-              <%= link_to "2", "#" %> 
-              <%= link_to "3", "#" %>
-          </div> 
-        </div> 
-      </div> 
+
+      <div class="flex justify-center items-center"> 
+          <div class="relative flex justify-center z-0 mx-8"> 
+              <button class="dropDownBn w-[150px] flex justify-center text-white bg-transparent rounded-lg px-5 py-2.5 text-center inline-flex items-center type="button">
+                  Каталог
+                  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+              </button>
+              <!-- Dropdown -->
+              <div class="dropDowned absolute top-full mt-2 z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                      <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                      </li>
+                      <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                      </li>
+                      <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                      </li>
+                      <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
 
       <div class="relative z-0 flex flex-1 items-center justify-center">
         <div class="w-full">
@@ -72,7 +85,7 @@
       
         <div class="relative ml-4 flex-shrink-0">  
           <div> 
-            <button type="button" class="relative h-12 w-12 rounded-full flex items-center justify-center icons-button focus:outline-none focus:bg-[#353638] hover:bg-[#353638] active:bg-[#353638]" aria-expanded="false" aria-haspopup="true">
+            <button type="button" class="relative h-12 w-12 rounded-full flex items-center justify-center icons-button focus:outline-none" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Open vert</span>
               <span class="material-icons rounded-full" style="font-size: 32px">more_vert</span>
             </button> 
@@ -100,7 +113,7 @@
         <% else %>
           <div class="relative ml-4 flex-shrink-0">
             <div>
-                <%= link_to "Вход", new_user_session_path, class:"relative flex" %>
+                <%= link_to "Вход", new_user_session_path, class:"relative flex text-[#f4f4f4]" %>
             </div>
           </div>
         <% end %>

@@ -9,14 +9,14 @@ export default class extends Controller {
     static targets = ["dropdownMenu", "openUserMenu"]
 
     connect(){
-            const targetElement = this.element.querySelector('[data-header-target="openUserMenu"]');
+        const targetElement = this.element.querySelector('[data-header-target="openUserMenu"]');
 
-            if (targetElement) {
-                this.openUserMenuTarget.addEventListener("click", () => {
-                    toggle(this.dropdownMenuTarget)
-                });
-                document.addEventListener("click", this.hide.bind(this));
-            }
+        if (targetElement) {
+            this.openUserMenuTarget.addEventListener("click", () => {
+                toggle(this.dropdownMenuTarget)
+            });
+            document.addEventListener("click", this.hide.bind(this));
+        }
     }
 
     hide(event) {
