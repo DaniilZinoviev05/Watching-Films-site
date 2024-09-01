@@ -3,7 +3,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  prepend_before_action :check_captcha, only: [:create] 
+  
+  #prepend_before_action :check_captcha, only: [:create] 
 
   ALLOWED_EXCEPTIONS = [Faraday::Error, Net::ReadTimeout, Net::OpenTimeout].freeze
 
@@ -50,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       response_body = JSON.parse(cf_response.body, symbolize_names: true)
   
       response_body[:success]
-    rescue JSON::ParserError
+      rescue JSON::ParserError
       true
     end
 end
