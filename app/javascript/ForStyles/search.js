@@ -27,12 +27,5 @@ document.addEventListener("turbo:load", () => {
             mode.classList.add('active');
         });
     });
-
-    dropdownmenu.addEventListener('mouseenter', (event) => {
-        if (!searchInput.contains(event.target) && !blockSearch.contains(event.target)) {
-            hideBlockSearch();
-            searchInput.blur()
-        }
-    });
 });
   
