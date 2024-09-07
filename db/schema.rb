@@ -14,6 +14,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_210355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "anime_status", ["Ongoing", "Ended"]
+  create_enum "anime_type", ["TV_Serial", "Film"]
+
+  create_table "animes", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.enum "status", null: false, enum_type: "anime_status"
+    t.enum "anime_type", null: false, enum_type: "anime_type"
+    t.integer "episodes", limit: 2, null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -33,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_210355) do
     t.datetime "updated_at", null: false
     t.string "provider", default: "", null: false
     t.string "uid", default: "", null: false
-    t.string "nickname", limit: 100, null: false, array: true
+    t.string "nickname", limit: 100, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
