@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @animes = Anime.all
+    @animes = Anime.limit(2)
   end
 end

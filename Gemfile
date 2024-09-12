@@ -37,6 +37,9 @@ gem 'json'
 gem 'retryable'
 gem 'net-http'
 
+# data 
+gem "image_processing", ">= 1.2"
+
 group :development, :test do
   # debugging
   gem 'byebug'

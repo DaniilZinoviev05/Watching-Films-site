@@ -17,7 +17,6 @@ a, p, h1, h2, h3, button {
 }
 
 .title {
-	background-color: #e8ebef;
 	color: #122233;
 }
 
@@ -77,6 +76,21 @@ a, p, h1, h2, h3, button {
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.01); 
 	}
+}
+
+.tooltip {
+	position: absolute;
+	left: 110%; 
+	top: 0%;
+}
+
+.tooltip-arrow {
+	position: absolute;
+	left: -8px; 
+	top: 40px; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid #122233; 
 }
 
 // search design 

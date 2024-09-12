@@ -1,30 +1,7 @@
-<div class="bg-white">
-    <div class="mx-auto max-w-7xl px-8">
-        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 grid-cols-6">
-            <% @animes.count do |anime| %>
-            <div class="group m-auto relative">
-                <div class="overflow-hidden rounded-md bg-gray-200 lg:aspect-none w-[160px] h-[200px]">
-                <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/1898899/0c168b50-2605-471d-b501-a849874b5d39/300x" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                </div>
-                <div class="mt-3 flex justify-between">
-                <div>
-                    <h3 class="text-sm hover:underline">
-                    <a href="#" class="hover:text-[#f28e3c] ">
-                        <span aria-hidden="true" class="absolute inset-0"></span>
-                        <%= anime.name %>
-                    </a>
-                    </h3>
-                    <p class="mt-1 text-xs text-gray-500">
-                        <% if anime.anime_type == 'TV_Serial'%>
-                            TV Сериал
-                        <% else %>
-                            Фильм
-                        <% end %>
-                    </p>
-                </div>
-                </div>
-            </div>
-            <% end %>
-        </div>
-    </div>
+<div class="title px-9">
+    <h1 class="text-lg bg-[#e8ebef] pl-2 my-2 border-l-4 font-sans font-bold border-gray-300">
+        Популярные аниме
+    </h1>
 </div>
+
+<%= render "layouts/anime"%>
