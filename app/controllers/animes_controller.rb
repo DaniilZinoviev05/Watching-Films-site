@@ -5,5 +5,6 @@ class AnimesController < ApplicationController
 
   def show
     @anime = Anime.find(params[:id])
+    @episodes = @anime.episodes.order(:episode_number)
   end
 end

@@ -3,7 +3,7 @@
   
     <!-- Image Section -->
     <div class="w-[200px] h-[260px] overflow-hidden rounded-lg">
-        <%= image_tag @anime.image, class: "h-full w-full object-cover object-center" %>
+        <img src="<%= @anime.image_url %>">
     </div>
 
     <!-- Basic Info Section -->
@@ -65,6 +65,25 @@
             <%= @anime.description %>
         </p>
     </div>
-
-
 </div>
+
+<!-- Tags -->
+<div class="mt-5 relative flex mx-auto my-2">
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">ГГ имба</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Гарем</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Сенен</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Длинное аниме</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Дружба</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Юмор</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Грустное</span>
+    <span class="bg-pink-100 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Боевик</span>
+</div>
+
+<h1 class="text-3xl my-2 font-bold mt-4">Серии</h1>
+<ul>
+    <% @episodes.each.with_index(1) do |episode, index| %>
+        <li class="mt-2">
+            <%= link_to "#{index} серия - #{episode.title}", anime_episode_path(@anime, episode.episode_number), class:"series-link"%>
+        </li>
+    <% end %>
+</ul>

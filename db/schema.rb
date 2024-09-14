@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_08_000315) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_13_182602) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_000315) do
     t.enum "status", null: false, enum_type: "anime_status"
     t.enum "anime_type", null: false, enum_type: "anime_type"
     t.integer "episodes", limit: 2, null: false
+    t.string "image_url"
+  end
+
+  create_table "episodes", primary_key: "id ", id: :integer, default: -> { "nextval('\"episodes _id _seq\"'::regclass)" }, force: :cascade do |t|
+    t.string "title", limit: 50, null: false
+    t.string "description"
+    t.integer "anime_id", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -81,4 +88,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_08_000315) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "episodes", "animes", name: "fk_animes_episodes"
 end

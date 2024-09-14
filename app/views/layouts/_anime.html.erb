@@ -3,7 +3,7 @@
         <% @animes.each do |anime| %>
             <div class="group m-auto relative element">
                 <div class="overflow-hidden rounded-md bg-gray-200 w-[160px] h-[200px]">
-                    <%= image_tag anime.image, class: "h-full w-full object-cover object-center" %>
+                    <img src="<%= anime.image_url %>">
                 </div>
                 <div class="content mt-2 flex items-center">
                     <div>

@@ -33,6 +33,14 @@ a, p, h1, h2, h3, button {
 	} 
 }
 
+.series-link {
+	color: #120a8f;
+	&:hover {
+		color: #f28e3c;
+		text-decoration: underline;
+	} 
+}
+
 .s-button {
 	display: flex;
 	align-items: center;
