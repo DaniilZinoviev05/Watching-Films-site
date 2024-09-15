@@ -23,67 +23,72 @@
 
     <%= render 'layouts/header' %>
 
-    <div class="flex absolute w-full h-[200px] z-0 overflow-hidden align-center">
-        <img class="w-auto h-full object-cover transition-all duration-300 blur-sm hover:blur-none flex-shrink-0 flex-grow" 
-            src="http://www.world-art.ru/animation/img/3000/2585/3.jpg" 
-            alt="image description">
-        <img class="w-auto h-full object-cover transition-all duration-300 blur-sm hover:blur-none flex-shrink-0 flex-grow" 
-            src="https://avatars.mds.yandex.net/i?id=1f813f7013120505d100020127f63206_l-9181224-images-thumbs&n=13" 
-            alt="image description">
-        <img class="w-auto h-full object-cover transition-all duration-300 blur-sm hover:blur-none flex-shrink-0 flex-grow" 
-            src="https://i.pinimg.com/originals/28/c2/b5/28c2b5cec377ba531c3ffbe3031fd54b.jpg" 
-            alt="image description">
-        <img class="w-auto h-full object-cover transition-all duration-300 blur-sm hover:blur-none flex-shrink-0 flex-grow"  
-            src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_65eb17cc6f8a3a5647fc832a_65eb1bd483037b54ae632d74/scale_1200" 
-            alt="image description">
-        <img class="w-auto h-full object-cover transition-all duration-300 blur-sm hover:blur-none flex-shrink-0 flex-grow" 
-            src="https://static.kinoafisha.info/k/movie_shots/1920x1080/upload/movie_shots/0/4/6/8175640/0cac7599c1de9f5ca636dffb41cf0791.jpg" 
+    <div class="flex absolute w-full h-[300px] z-0 overflow-hidden align-center">
+        <img class="w-auto h-full object-cover transition-all duration-300 filter grayscale hover:grayscale-0 flex-shrink-0 flex-grow" 
+            src="<%= @anime.background_image_url %>" 
             alt="image description">
     </div>
 
 
-    <main class="relative flex mx-auto z-3 w-[1050px] my-3" style="margin-top: 140px">
-        <div class=" mx-auto mb-3 bg-[#f4f4f4] rounded-lg">
-            <!-- Image Section -->
-            <div class="w-[200px] h-[260px] overflow-hidden rounded-lg">
-                <img src="<%= @anime.image_url %>">
-            </div>
-        </div>
-
-        <div class="w-[800px] z-3 my-3 p-4 mx-auto rounded-md bg-[#fff]">
-            <div class="anime-navigation w-auto h-7 mx-auto border-b-2">
-                <button class="nav-btn" data-section="info">Информация</button>
-                <button class="nav-btn" data-section="episodes">Эпизоды</button>
-                <button class="nav-btn" data-section="discussions">Фильмы</button>
-                <button class="nav-btn" data-section="reviews">Отзывы</button>
-                <button class="nav-btn" data-section="discussions">Дискуссии</button>
-            </div>
-
-            <!-- Tags -->
-            <div class="w-full">
-                <div class="relative flex flex-wrap mx-auto my-2">
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">ГГ имба</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Гарем</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Сенен</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Длинное аниме</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Дружба</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Юмор</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Грустное</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Боевик</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Юмор</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Грустное</span>
-                    <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Боевик</span>
+    <main class="relative flex items-center mx-auto z-3 w-[1150px] my-3" style="margin-top: 170px">
+        <div class="flex justify-center mx-auto w-full">
+            <div class="ml-auto mb-3 bg-[#f4f4f4] rounded-md">
+                <!-- Image Section -->
+                <div class="w-[250px] h-auto overflow-hidden rounded-md">
+                    <img src="<%= @anime.image_url%>" class="w-full object-cover">
                 </div>
-            </div>   
+            </div>
 
-            <h1 class="text-3xl my-2 font-bold mt-4">Серии</h1>
-            <ul>
-                <% @episodes.each.with_index(1) do |episode, index| %>
-                    <li class="mt-2 ">
-                        <%= link_to "#{index} серия - #{episode.title}", anime_episode_path(@anime, episode.episode_number), class:"series-link "%>
-                    </li>
-                <% end %>
-            </ul>
+            <div class="w-[800px] z-3 mx-auto">
+                <h3 class="text-3xl mb-2 h-auto font-bold dark:text-white"><%= @anime.name %></h3>
+                <div class="p-4 mb-2 mx-auto rounded-md bg-[#fff]">
+                    <div class="anime-navigation w-auto h-7 mx-auto border-b-2">
+                        <button class="nav-btn" data-section="info">Информация</button>
+                        <button class="nav-btn" data-section="episodes">Эпизоды</button>
+                        <button class="nav-btn" data-section="discussions">Фильмы</button>
+                        <button class="nav-btn" data-section="reviews">Отзывы</button>
+                        <button class="nav-btn" data-section="discussions">Дискуссии</button>
+                        <button class="nav-btn" data-section="discussions">Ссылки</button>
+                    </div>
+
+                    <div class="w-full">
+                        <div class="relative flex flex-wrap mx-auto my-2">
+                            <%= @anime.description %>
+                        </div>
+                    </div> 
+
+                    <!-- Tags -->
+                    <div class="w-full">
+                        <div class="relative flex flex-wrap mx-auto my-2">
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">ГГ имба</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Гарем</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Сенен</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Длинное аниме</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Дружба</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Юмор</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Грустное</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Боевик</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Юмор</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Грустное</span>
+                            <span class="bg-pink-100 mt-2 text-pink-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-pink-200">Боевик</span>
+                        </div>
+                    </div>   
+
+                    <!-- <h1 class="text-3xl my-2 font-bold mt-4">Серии</h1>
+                    <ul>
+                        <% @episodes.each.with_index(1) do |episode, index| %>
+                            <li class="mt-2 ">
+                                <%= link_to "#{index} серия - #{episode.title}", anime_episode_path(@anime, episode.episode_number), class:"series-link "%>
+                            </li>
+                        <% end %>
+                    </ul> -->
+                </div>
+                <div class="p-4 mb-2 mx-auto rounded-md bg-[#fff]">
+                    <div class="flex justify-center mx-auto">
+                        <!-- charts -->
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
